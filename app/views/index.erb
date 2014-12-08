@@ -1,0 +1,21 @@
+
+<h1><%= @title %></h1>
+
+<body>
+	<div>
+		
+		<% @meetups.each do |meetup| %>
+			<li>
+				<h4><a href="/meetups/<%=meetup.id %>"><%=meetup.name%></a></h4>
+			</li>
+		<% end %>	
+		
+	</div>
+
+
+
+</body>
+
+
+
+
