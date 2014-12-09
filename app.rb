@@ -31,12 +31,14 @@ def authenticate!
   end
 end
 
+# index page - returns all meetups in the database
 get '/' do
   @meetups = Meetup.all
-  binding.pry
+  # binding.pry
   erb :index
 end
 
+# give us detail on one selected meetup
 get '/meetups/:id' do
   # @id = params[:id]
   binding.pry
@@ -44,8 +46,9 @@ get '/meetups/:id' do
   erb :show
 end
 
+# get us to the page to create a new meetup
 get '/create_meetup' do
-  @new_meetup = Meetup.new
+  
 
   erb :create_meetup
 end
@@ -71,3 +74,36 @@ end
 get '/example_protected_page' do
   authenticate!
 end
+
+# to create a new meetup
+post '/create_meetup' do
+  
+  @name = params[:new_name]
+  @location = params[:new_location]
+  @description = params[:new_description]
+  
+  new_meetup = Meetup.new(name: @name, location: @location, description: @description)
+  # need to validate that a user is signed in before saving the new record
+  if helpers.current_user && helplers.signed_in? 
+    new_meetup.save
+  end
+
+  if new_meetup.save == true
+    flash "You have successfully added your new Meetup!"
+  else
+    flash "there has been an error adding your Meetup"
+  end
+
+  binding.pry
+
+  # need to redirect to the actual page of the meetup - is not working currently
+  redirect '/'
+
+end
+
+# to post a comment on a meetup
+post '/meetups/:id' do
+
+end
+
+

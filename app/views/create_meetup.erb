@@ -4,12 +4,12 @@
 <h4>Please add the below items:</h4>
 
 <div>
-	<form method="post" action="/new_meetup">
+	<form method="post" action="/create_meetup">
 
-		<p>Meetup Name: <input type="textarea" name="new_meetup" value="New meetup name"></p>
-		<p>Location: <input type="textarea" name="new_meetup" value="New meetup name"></p>
-		<p>Meetup Description: <input type="textarea" rows="5" cols="50" name="new_meetup" value="New meetup name"></p>
-		<input type="submit">
+		<p>Meetup Name: <input type="textarea" name="new_name" value="<%= @name%>"></p>
+		<p>Location: <input type="textarea" name="new_location" value="<%= @location%>"></p>
+		<p>Meetup Description: <input type="textarea" rows="5" cols="50" name="new_description" value="<%= @description%>"></p>
+		<input type="submit" >
 	</form>
 
 
