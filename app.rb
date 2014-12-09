@@ -33,8 +33,9 @@ end
 
 # index page - returns all meetups in the database
 get '/' do
-  @meetups = Meetup.all
-  # binding.pry
+  meetups = Meetup.all
+  @meetups = meetups.order(:name)
+  binding.pry
   erb :index
 end
 
