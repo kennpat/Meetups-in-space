@@ -1,0 +1,19 @@
+<h1><%= @title %></h1>
+
+<h1>Adding a new meetup?</h1>
+<h4>Please add the below items:</h4>
+
+<div>
+	<form method="post" action="/new_meetup">
+
+		<p>Meetup Name: <input type="textarea" name="new_meetup" value="New meetup name"></p>
+		<p>Location: <input type="textarea" name="new_meetup" value="New meetup name"></p>
+		<p>Meetup Description: <input type="textarea" rows="5" cols="50" name="new_meetup" value="New meetup name"></p>
+		<input type="submit">
+	</form>
+
+
+</div>
+<div>
+	<a href="/">Back</a>
+</div>

@@ -2,8 +2,9 @@
 <h1><%= @title %></h1>
 
 <body>
+	<div><a href="/create_meetup">Create A Meetup</a></div>
 	<div>
-		
+		<h3>Available Meetups:</h3>
 		<% @meetups.each do |meetup| %>
 			<li>
 				<h4><a href="/meetups/<%=meetup.id %>"><%=meetup.name%></a></h4>
