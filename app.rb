@@ -45,7 +45,7 @@ get '/meetups/:id' do
   
   @meetup = Meetup.find(params[:id])
   
-  @participants = Participants.find()
+  # @participants = Participants.find()
   binding.pry
   erb :show
 end

@@ -19,11 +19,11 @@
 
 <div>
 	<h4>Attendees:</h4>
-
+		<% @meetup.users.each do |attendee| %>
 			<li>
-
+				<%= attendee.username %>
 			</li>
-
+		<% end %>
 
 </div>
 <div>
