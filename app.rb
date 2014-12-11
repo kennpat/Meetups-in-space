@@ -42,8 +42,11 @@ end
 # give us detail on one selected meetup
 get '/meetups/:id' do
   # @id = params[:id]
-  binding.pry
+  
   @meetup = Meetup.find(params[:id])
+  
+  @participants = Participants.find()
+  binding.pry
   erb :show
 end
 
@@ -89,7 +92,7 @@ post '/create_meetup' do
   
   new_meetup = Meetup.new(name: @name, location: @location, description: @description)
   # need to validate that a user is signed in before saving the new record
-  if helpers.current_user && helplers.signed_in? 
+  if current_user 
     new_meetup.save
   end
 
@@ -99,7 +102,7 @@ post '/create_meetup' do
     flash "there has been an error adding your Meetup"
   end
 
-  binding.pry
+  # binding.pry
 
   # need to redirect to the actual page of the meetup - is not working currently
   redirect '/'
@@ -107,8 +110,16 @@ post '/create_meetup' do
 end
 
 # to post a comment on a meetup
-post '/meetups/:id' do
+post '/meetups/' do
+  
+  join_meetup = params[:join_meetup]
+  
+  new_participant = Participant.new(user_id: session[:user_id], meetup_id: join_meetup) 
+  # binding.pry
+  # need to add a conditional that will make sure the user isn't joining twice
+  new_participant.save
 
+  redirect "/meetups/#{join_meetup}"
 end
 
 

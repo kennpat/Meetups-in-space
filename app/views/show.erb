@@ -8,17 +8,24 @@
 	<h5><p>Event Description: <%= @meetup.description %></p></h5>
 
 <div>Join Meetup</div>
+	<form method="post" action="/meetups/">
+		<input type="hidden" name="join_meetup" value="<%= @meetup.id %>">
+		<input type="submit" value="Join Meetup!">
+		<% binding.pry %>
+	</form>
 
-<div></div>
+<div>
+</div>
 
 <div>
 	<h4>Attendees:</h4>
 
-	<li>
+			<li>
 
-	</li>
+			</li>
 
 
 </div>
-
-<a href='/'>Back</a>
+<div>
+	<a href='/'>Back</a>
+</div>
