@@ -7,21 +7,29 @@
 
 	<h5><p>Event Description: <%= @meetup.description %></p></h5>
 
-<div>Join Meetup</div>
+<div>Join Meetup
 	<form method="post" action="/meetups/">
 		<input type="hidden" name="join_meetup" value="<%= @meetup.id %>">
 		<input type="submit" value="Join Meetup!">
-		<% binding.pry %>
+		
 	</form>
-
-<div>
 </div>
+<div>
 
+	<% if @meetup.users.include?(current_user) %>		
+		<form method="post" action="/meetups/leave">
+			
+			<input type="hidden" name="participant" value=<%%>
+			<input type="submit" value="Leave Meetup!">
+		</form>
+	<%end%>
+
+</div>
 <div>
 	<h4>Attendees:</h4>
 		<% @meetup.users.each do |attendee| %>
 			<li>
-				<%= attendee.username %>
+				<img src="<%=attendee.avatar_url%>" width="75" height="75"> </img><%= attendee.username %>
 			</li>
 		<% end %>
 

@@ -35,18 +35,16 @@ end
 get '/' do
   meetups = Meetup.all
   @meetups = meetups.order(:name)
-  binding.pry
+  # binding.pry
   erb :index
 end
 
 # give us detail on one selected meetup
 get '/meetups/:id' do
-  # @id = params[:id]
   
+  @user = session[:id]
   @meetup = Meetup.find(params[:id])
   
-  # @participants = Participants.find()
-  binding.pry
   erb :show
 end
 
@@ -109,7 +107,7 @@ post '/create_meetup' do
 
 end
 
-# to post a comment on a meetup
+# Leaving a meetup working.
 post '/meetups/' do
   
   join_meetup = params[:join_meetup]
@@ -122,4 +120,15 @@ post '/meetups/' do
   redirect "/meetups/#{join_meetup}"
 end
 
+
+# Still not quite working.
+post '/meetups/leave' do
+  # binding.pry
+  leave_meetup = Participant.find_by(user_id: params[:user_leave], meetup_id: meetup_leave)
+  # binding.pry
+  leave_meetup.destroy
+  # flash "you have left the meetup!"
+  redirect "/"
+
+end
 
